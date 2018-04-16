@@ -2,12 +2,12 @@ if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 
 const express = require('express');
 const app = express();
+const generalRouter = require('./routers/generalRouter');
 
 app.get('/', (req, res) => {
-  res.send('nothing to see here, move along...');
+  res.send('api working...');
 });
-app.get('/api', (req, res) => {
-  res.send('General api handler working...')
-});
+
+app.use('/api', generalRouter);
 
 module.exports = app;
