@@ -10,7 +10,7 @@ const handleErrors = (err, req, res, next) => {
       return next();
   }
   
-  res.json({"error": err.status, message});
+  res.json({"error": {"status": err.status, message}});
 
 }
 

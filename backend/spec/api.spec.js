@@ -75,8 +75,8 @@ describe('-----API endpoints-----', () => {
         .end((req, res) => {
           expect(res.status).to.equal(200);
           done();
-        })
-    })
+        });
+    });
   });
 
   describe('unhandled endpoints', () => {
@@ -87,6 +87,14 @@ describe('-----API endpoints-----', () => {
           expect(res.type).to.equal('application/json');
           done();
         })
-    })
+    });
+    it('responds with an error obj on unexistent handles', (done) => {
+      request(app)
+        .get('/api/test')
+        .end((req, res) => {
+          expect(res.body.error).to.be.an('object');
+          done();
+        });
+    });
   });
 });
