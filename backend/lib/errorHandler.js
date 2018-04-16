@@ -1,14 +1,16 @@
 const handleErrors = (err, req, res, next) => {
-
+  let message = "";
   switch (err.status) {
     
     case 404:
-      res.send(err.message || 'An error occured');  
+      message = "The requested resource does not exist";
       break;
-  
+    
     default:
       return next();
   }
+  
+  res.json({"error": err.status, message});
 
 }
 
