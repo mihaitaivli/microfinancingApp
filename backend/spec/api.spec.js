@@ -58,5 +58,24 @@ describe('-----API endpoints-----', () => {
           done();
         })
     })
-  })
+  });
+
+  describe('/api/admin - private endpoint', () => {
+    it('responds with 200 on /admin/customers ', (done) => {
+      request(app)
+        .get('/api/admin/customers')
+        .end((req, res) => {
+          expect(res.status).to.equal(200);
+          done();
+        })
+    })
+    it('responds with 200 on /admin/modifyvalues', (done) => {
+      request(app)
+        .get('/api/admin/modifyvalues')
+        .end((req, res) => {
+          expect(res.status).to.equal(200);
+          done();
+        })
+    })
+  });
 });
