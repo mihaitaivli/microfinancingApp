@@ -96,5 +96,13 @@ describe('-----API endpoints-----', () => {
           done();
         });
     });
+    it('the error has a 404 status on unexistent handles', (done) => {
+      request(app)
+        .get('/api/test')
+        .end((req, res) => {
+          expect(res.body.error.status).to.equal(404);
+          done();
+        });
+    });
   });
 });
