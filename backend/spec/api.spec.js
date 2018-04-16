@@ -78,4 +78,15 @@ describe('-----API endpoints-----', () => {
         })
     })
   });
+
+  describe('unhandled endpoints', () => {
+    it('responds with json on unexistent handles', (done) => {
+      request(app)
+        .get('/api/test')
+        .end((req, res) => {
+          expect(res.type).to.equal('application/json');
+          done();
+        })
+    })
+  });
 });
