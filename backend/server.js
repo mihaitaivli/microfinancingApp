@@ -4,7 +4,10 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Listening...');
+  res.send('nothing to see here, move along...');
+});
+app.get('/api', (req, res) => {
+  res.send('General api handler working...')
 });
 
 module.exports = app;
