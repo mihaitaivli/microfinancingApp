@@ -24,6 +24,10 @@ const CustomerSchema = new Schema({
   dob : {
     type: String,
     required: true
+  },
+  risk_category : {
+    type: String,
+    required: true
   }
 });
 
