@@ -9,6 +9,7 @@ mongoose.connect(DB)
   .then(() => console.log('successfully connected to', DB))
   .catch(err => console.log('connection failed', err));
 
+  // server-related section
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
