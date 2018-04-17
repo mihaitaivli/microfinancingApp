@@ -5,5 +5,10 @@ module.exports = {
     Customers.find()
       .then(customers => cb(null, customers))
       .catch(cb);
+  },
+  findByName(name, cb){
+    Customers.find(name)
+    .then(customers => cb(null, customers))
+    .catch(cb);
   }
 }

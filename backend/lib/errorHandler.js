@@ -5,7 +5,11 @@ const handleErrors = (err, req, res, next) => {
     case 404:
       message = "The requested resource does not exist";
       break;
-    
+
+    case 500:
+      message = "We encountered an internal error";
+      break;
+
     default:
       return next();
   }
