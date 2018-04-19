@@ -20,16 +20,25 @@ saveCustomer = () => {
   return customer.save();
 }
 
+saveVariables = () => {
+  const variables = new Variables({});
+  return variables.save();
+}
+
 seedData = () => {
   mongoose.connect(DB);
   mongoose.connection.dropDatabase();
   return saveCustomer()
     .then(user => {
       savedData.user = user;
-      console.log(savedData);
+      return saveVariables()
+    })
+    .then(variables => {
+      savedData.variables = variables;
       mongoose.connection.close();
+      console.log(savedData);
       return savedData;
-    });
+    })
 }
 
 seedData();
