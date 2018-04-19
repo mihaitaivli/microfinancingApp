@@ -6,8 +6,8 @@ module.exports = {
       .then(customers => cb(null, customers))
       .catch(cb);
   },
-  findByName(name, cb){
-    Customers.find(name)
+  findByName(name, cb){ // TODO - find by aggregating name and postcode 
+    Customers.find({last_name: name})
     .then(customers => cb(null, customers))
     .catch(cb);
   }
