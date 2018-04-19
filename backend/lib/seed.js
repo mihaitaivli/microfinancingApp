@@ -22,6 +22,17 @@ saveCustomer = () => {
   return customer.save();
 }
 
+saveLoans = (user) => {
+  const loan = new Loans({
+    customer : user._id,
+    loan_amount : 1500,
+    loan_term : 10,
+    payment_date : 15
+  });
+  user.loans.push(loan._id);
+  return loan.save();
+}
+
 saveVariables = () => {
   const variables = new Variables({});
   return variables.save();
@@ -33,14 +44,18 @@ seedData = () => {
   return saveCustomer()
     .then(user => {
       savedData.user = user;
-      return saveVariables()
+      return saveLoans(user)
+    })
+    .then(loans => {
+      savedData.loans = loans;
+      return saveVariables();
     })
     .then(variables => {
       savedData.variables = variables;
       mongoose.connection.close();
       console.log(savedData);
       return savedData;
-    })
+    });
 }
 
 seedData();

@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const LoanSchema = new Schema({
   customer: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true
+    required: true,
+    ref: "customers"
   },
   starting_date: {
     type: Number,
@@ -16,13 +17,14 @@ const LoanSchema = new Schema({
   },
   loan_amount_paid : {
     type: Number,
-    required: true
+    required: true,
+    default : 0
   },
   loan_term : {
     type: Number,
     required: true
   },
-  due_date : {
+  payment_date : {
     type: Number,
     required: true
   },

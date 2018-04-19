@@ -32,7 +32,8 @@ const CustomerSchema = new Schema({
   risk_category : {
     type: String,
     required: true
-  }
+  },
+  loans: [{ type: Schema.Types.ObjectId, ref: "loans" }]
 });
 
 module.exports = mongoose.model('customers', CustomerSchema);
