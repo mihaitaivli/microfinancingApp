@@ -2,6 +2,10 @@ const handleErrors = (err, req, res, next) => {
   let message = "";
   switch (err.status) {
     
+    case 40:
+      message = "Bad request";
+      break;
+    
     case 404:
       message = "The requested resource does not exist";
       break;

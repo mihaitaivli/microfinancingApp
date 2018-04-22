@@ -25,7 +25,7 @@ customersRouter.get('/:name', (req, res, next) => {
 customersRouter.post('/', (req, res, next) => {
   customersCtrl.addNewCustomer(req.body, (err, newCustomer) => {
     if (err) {
-      err.status = 401; // TODO - handle the error properly
+      err.status = 400; // TODO - handle the error properly
       next(err);
     }
     else res.send(newCustomer);
@@ -35,7 +35,7 @@ customersRouter.post('/', (req, res, next) => {
 customersRouter.put('/:id', (req, res, next) => {
   customersCtrl.modify(req.params.id, req.body, (err, modifiedCustomer) => {
     if (err) {
-      err.status = 401; // TODO - handle the error properly
+      err.status = 400; // TODO - handle the error properly
       next(err);
     }
     else res.send(modifiedCustomer);
