@@ -7,8 +7,7 @@ customersRouter.get('/', (req, res, next) => {
     if (err) {
       err.status = 500;
       next(err);
-    }
-    else res.send(customers);
+    } else res.send(customers);
   });
 });
 
@@ -17,8 +16,7 @@ customersRouter.get('/find', (req, res, next) => {
     if (err) {
       err.status = 500;
       next(err);
-    }
-    else res.send(customers);
+    } else res.send(customers);
   });
 });
 
@@ -27,8 +25,7 @@ customersRouter.get('/:id', (req, res, next) => {
     if (err) {
       err.status = 500;
       next(err);
-    }
-    else res.send(customer);
+    } else res.send(customer);
   });
 });
 
@@ -37,8 +34,7 @@ customersRouter.post('/', (req, res, next) => {
     if (err) {
       err.status = 400; // TODO - handle the error properly
       next(err);
-    }
-    else res.send(newCustomer);
+    } else res.send(newCustomer);
   });
 });
 
@@ -47,8 +43,7 @@ customersRouter.put('/:id', (req, res, next) => {
     if (err) {
       err.status = 400; // TODO - handle the error properly
       next(err);
-    }
-    else res.send(modifiedCustomer);
+    } else res.send(modifiedCustomer);
   });
 });
 
