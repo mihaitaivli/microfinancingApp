@@ -22,4 +22,14 @@ customersRouter.get('/:name', (req, res, next) => {
   });
 });
 
+customersRouter.post('/', (req, res, next) => {
+  customersCtrl.addNewCustomer(req.body, (err, newCustomer) => {
+    if (err) {
+      err.status = 401; // TODO - handle the error properly
+      next(err);
+    }
+    else res.send(newCustomer);
+  });
+});
+
 module.exports = customersRouter;
