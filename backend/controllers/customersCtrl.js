@@ -25,5 +25,18 @@ module.exports = {
     Customers.create(newCustomer)
       .then(customer => cb(null, customer))
       .catch(cb);
+  },
+  modify(id, data, cb){
+    let modifiedData = {
+      first_name : data.first_name,
+      last_name: data.last_name,
+      address : data.address,
+      postcode : data.address,
+      dob: data.dob,
+      risk_category: data.risk_category
+    };
+    Customers.findByIdAndUpdate(id, modifiedData, {new: true})
+      .then(modifiedCustomer => cb(null, modifiedCustomer))
+      .catch(cb);
   }
 }

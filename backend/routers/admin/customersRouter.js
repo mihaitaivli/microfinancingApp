@@ -32,4 +32,14 @@ customersRouter.post('/', (req, res, next) => {
   });
 });
 
+customersRouter.put('/:id', (req, res, next) => {
+  customersCtrl.modify(req.params.id, req.body, (err, modifiedCustomer) => {
+    if (err) {
+      err.status = 401; // TODO - handle the error properly
+      next(err);
+    }
+    else res.send(modifiedCustomer);
+  });
+});
+
 module.exports = customersRouter;
