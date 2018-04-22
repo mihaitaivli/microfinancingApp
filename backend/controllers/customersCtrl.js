@@ -7,9 +7,18 @@ module.exports = {
       .then(customers => cb(null, customers))
       .catch(cb);
   },
-  findByName(name, cb){ // TODO - find by aggregating name and postcode
-    Customers.findOne({"last_name": name})
+  findAggregate(criteria, cb){
+    let last_name = criteria.name;
+    let postcode = criteria.postcode;
+    let dob = criteria.dob;
+    
+    Customers.find({$or:[{ postcode }, { dob }, { last_name }]})
     .then(customers => cb(null, customers))
+    .catch(cb);
+  },
+  findById(id, cb){
+    Customers.findById(id)
+    .then(customer => cb(null, customer))
     .catch(cb);
   },
   addNewCustomer(data, cb){

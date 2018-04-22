@@ -12,13 +12,23 @@ customersRouter.get('/', (req, res, next) => {
   });
 });
 
-customersRouter.get('/:name', (req, res, next) => {
-  customersCtrl.findByName(req.params.name, (err, customers) => {
+customersRouter.get('/find', (req, res, next) => {
+  customersCtrl.findAggregate(req.query, (err, customers) => {
     if (err) {
       err.status = 500;
       next(err);
     }
     else res.send(customers);
+  });
+});
+
+customersRouter.get('/:id', (req, res, next) => {
+  customersCtrl.findById(req.params.id, (err, customer) => {
+    if (err) {
+      err.status = 500;
+      next(err);
+    }
+    else res.send(customer);
   });
 });
 
