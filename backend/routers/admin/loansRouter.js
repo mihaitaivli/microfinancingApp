@@ -11,4 +11,13 @@ loansRouter.get('/', (req, res, next) => {
   })
 });
 
+loansRouter.get('/:id', (req, res, next) => {
+  loansCtrl.getById(req.params.id, (err, loans) => {
+    if (err) {
+      err.status = 500;
+      next(err);
+    } else res.send(loans);
+  })
+});
+
 module.exports = loansRouter;
