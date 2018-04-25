@@ -17,7 +17,6 @@ const LoanSchema = new Schema({
   },
   loan_amount_paid : {
     type: Number,
-    required: true,
     default : 0
   },
   loan_term : {
