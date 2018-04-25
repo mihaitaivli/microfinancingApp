@@ -18,25 +18,23 @@ describe('-----API endpoints-----', () => {
   });
 
   describe('/api - endpoint', () => {
-    it('responds with 200 on /apply ', (done) => {
+    it('responds with the correct boolean on /apply ', (done) => {
       request(app)
-        .get('/api/apply')
+        .post('/api/apply')
+        .send({
+          "amount": 2000,
+          "duration": 36
+        })
         .end((req, res) => {
           expect(res.status).to.equal(200);
+          expect(res.type).to.equal('application/json');
+          expect(res.body.isEligible).to.be.true;
           done();
         })
     })
     it('responds with 200 on /signup ', (done) => {
       request(app)
         .get('/api/signup')
-        .end((req, res) => {
-          expect(res.status).to.equal(200);
-          done();
-        })
-    })
-    it('responds with 200 on /signin ', (done) => {
-      request(app)
-        .get('/api/signin')
         .end((req, res) => {
           expect(res.status).to.equal(200);
           done();
