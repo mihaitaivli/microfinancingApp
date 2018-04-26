@@ -75,11 +75,21 @@ describe('-----API endpoints-----', () => {
           done();
         })
     })
-    it('responds with 200 on /admin/modifyvalues', (done) => {
+    it('handles correctly the /admin/modifyvalues route', (done) => {
       request(app)
-        .get('/api/admin/modifyvalues')
+        .put('/api/admin/modifyvalues')
+        .send({
+          "low_credit_score": 0.1,
+          "high_credit_score": 600,
+          "interest_rate": 0.1,
+          "low_loan_amount": 500,
+          "high_loan_amount": 2500,
+          "loan_maximum_ceiling": 5000
+          })
         .end((req, res) => {
           expect(res.status).to.equal(200);
+          expect(res.type).to.equal('application/json');
+          expect(res.body.low_credit_score).to.equal(0.1);
           done();
         });
     });

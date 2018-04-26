@@ -53,10 +53,9 @@ const seedData = () => {
     .then(variables => {
       savedData.variables = variables;
       mongoose.connection.close();
-      console.log(savedData);
       return savedData;
     });
 }
 
 seedData();
-module.exports = seedData;
+module.exports = {seedData, savedData};
