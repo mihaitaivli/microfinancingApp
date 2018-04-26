@@ -21,6 +21,6 @@ app.use('/api/admin', adminRouter);
 app.use('*', errorRouter);
 
 // error handling middleware
-// app.use(errorHandler);
+app.use(errorHandler);
 
 module.exports = app;
