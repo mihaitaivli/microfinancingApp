@@ -38,7 +38,7 @@ saveVariables = () => {
   return variables.save();
 }
 
-seedData = () => {
+const seedData = () => {
   mongoose.connect(DB);
   mongoose.connection.dropDatabase();
   return saveCustomer()
@@ -59,3 +59,4 @@ seedData = () => {
 }
 
 seedData();
+module.exports = seedData;
