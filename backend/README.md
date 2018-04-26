@@ -1,0 +1,1 @@
+<!-- TODO : explain how the backend works and describe the main API routes -->
