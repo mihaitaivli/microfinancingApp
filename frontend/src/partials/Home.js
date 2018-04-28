@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Jumbotron from './Jumbotron';
+import FrontPageSection from './FrontPageSection';
 
-export default class Home extends Component {
-  render(){
-    return(
-      <div className="header">
-        <Jumbotron />
-      </div>
-    );
-  };
+const Home = () => {
+  return(
+    <div className="header">
+      <Jumbotron />
+      <FrontPageSection />
+    </div>
+  );
 }
+
+export default Home;
