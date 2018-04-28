@@ -1,11 +1,20 @@
 import React from 'react';
-import Header from './Header';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
+import Home from './Home';
+import Apply from './Apply';
+import Login from './Login';
+import Admin from './Admin';
 
 const Main = () => {
   return(
     <div>
-    <Header />
-      Main content here
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/apply' component={Apply} />
+        <Route path='/login' component={Login} />
+        <Route path='/admin' component={Admin} />
+      </Switch>
     </div>
   );
 };

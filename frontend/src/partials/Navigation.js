@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Main from './Main';
 
 export default class Navigation extends Component{
   render(){
     return(
+      <Router>
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             <img src="logo.png" width="30" height="30" alt="" />
-          </a>
+          </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="#">Home<span className="sr-only">(current)</span></a>
+                <Link className="nav-link" to="/">Home<span className="sr-only">(current)</span></Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Apply</a>
+                <Link className="nav-link" to="/apply">Apply</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Login</a>
+                <Link className="nav-link" to="/login">Login</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" disabled href="#">Admin</a>
+                <Link className="nav-link" disabled to="/admin">Admin</Link>
               </li>
             </ul>
           </div>
         </nav>
+        <Main />
       </div>
+      </Router>
     );
   }
 }
