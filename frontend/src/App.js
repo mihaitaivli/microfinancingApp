@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Header from './partials/Header';
+import Main from './partials/Main';
+import Navigation from './partials/Navigation';
 import Footer from './partials/Footer';
 import './App.css';
 
@@ -7,8 +8,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div>Container</div>
+        <Navigation />
+        <Main />
         <Footer />
       </div>
     );
