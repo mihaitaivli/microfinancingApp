@@ -28,11 +28,13 @@ class Apply extends Component{
     })
     .then(response => response.json())
     .then(admitted => {
+      sessionStorage.setItem('amount', amount);
+      sessionStorage.setItem('duration', duration);
       this.setState({
         amount: '',
         duration: '',
         isEligible: admitted.isEligible
-      })
+      });
     })
   }
 
@@ -41,7 +43,7 @@ class Apply extends Component{
       <div>
         <Filler />
         <div className="container">
-          <IsEligible isEligible={this.state.isEligible}/>
+          <IsEligible isEligible={this.state.isEligible} />
           <form>
             <div className="form-group">
               <label for="amount">How much you need</label>

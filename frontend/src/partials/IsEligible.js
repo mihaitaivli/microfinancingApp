@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const IsEligible = (props) => {
   return(
@@ -23,6 +24,7 @@ const Success = () => {
       <p>Congratulations!</p>
       <p>You will be redirected to</p>
       <p>the registration page</p>
+      <Link to='/registration' className="btn btn-success">Proceed</Link>
     </div>
   );
 }
