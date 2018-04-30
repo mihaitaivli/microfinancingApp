@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Jumbotron = () => {
   return(
@@ -13,7 +14,7 @@ const Jumbotron = () => {
             <hr className="my-4" />
             <p className="lead d-none d-sm-block">Think getting a loan is hard? Think again!</p>
             <p className="d-none d-sm-block">Long gone are the days when the only real option for receiving a small loan was to approach your bank.</p>
-            <a href="#" class="btn btn-lg btn-light call-to-action">Apply</a>
+            <Link to="/apply" class="btn btn-lg btn-light call-to-action">Apply</Link>
           </div>
         </div>
       </div>
