@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import encrypt from '../lib/passwordHash';
 const API_POINTS = require('../lib/apiPoints');
-
-// {
-//   "first_name" : "Alexandra",
-//   "last_name" : "Ivli",
-//   "address" : "The same",
-//   "postcode" : "m12399sn",
-//   "dob" : "underage",
-//   "risk_category" : "medium" - to do later
-// ----------------------------
-// "email"
-// "passwordHash"
-// "twitter" - not required
-// ->returns a customer id
-//   }
 
 class Registration extends Component{
 
@@ -28,7 +15,8 @@ class Registration extends Component{
     "email":'',
     "password":'',
     "twitter":'',
-    "checked": false
+    "checked": false,
+    "referrer": null
   }
 
   handleChange = (e) => {
@@ -58,16 +46,31 @@ class Registration extends Component{
       method: 'POST'
     }).then(newCustomer => newCustomer.json())
       .then(addedCustomer => {
-        console.log(addedCustomer);
-      });
+        // store in session the id of the customer
+        sessionStorage.setItem("customer", addedCustomer._id);
 
+        this.setState({
+          "first_name":'',
+          "middle_names": '',
+          "last_name": '',
+          "address":'',
+          "postcode":'',
+          "dob":'',
+          "email":'',
+          "password":'',
+          "twitter":'',
+          "checked": false,
+          "referrer": '/addLoan'
+        });
 
+      })
   }
 
   render(){
     let amount = sessionStorage.getItem('amount');
     let duration = sessionStorage.getItem('duration');
-    let { first_name, middle_names, last_name, address, postcode, dob, email, password, twitter, checked } = this.state;
+    let { first_name, middle_names, last_name, address, postcode, dob, email, password, twitter, checked, referrer } = this.state;
+    if (referrer) return <Redirect to={referrer} />
     return(
       <div className="container">
         <h3>Personal details</h3>
