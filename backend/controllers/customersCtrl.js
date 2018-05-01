@@ -29,6 +29,9 @@ module.exports = {
       address : data.address,
       postcode : data.address,
       dob: data.dob,
+      email: data.email,
+      passwordHash: data.passwordHash,
+      twitter: data.twitter,
       risk_category: data.risk_category
     };
     Customers.create(newCustomer)

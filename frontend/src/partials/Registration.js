@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import encrypt from '../lib/passwordHash';
+const API_POINTS = require('../lib/apiPoints');
 
 // {
 //   "first_name" : "Alexandra",
@@ -23,6 +24,7 @@ class Registration extends Component{
     "last_name": '',
     "address":'',
     "postcode":'',
+    "dob":'',
     "email":'',
     "password":'',
     "twitter":'',
@@ -43,18 +45,29 @@ class Registration extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let { first_name, middle_names, last_name, address, postcode, email, password, twitter } = this.state;
+    let { first_name, middle_names, last_name, address, postcode, email, dob, password, twitter } = this.state;
     let passwordHash = encrypt(password);
     const CUSTOMER = {
-      first_name, middle_names, last_name, address, postcode, email, passwordHash, twitter
+      first_name, middle_names, last_name, address, postcode, email, dob, passwordHash, twitter
     }
-    console.log('customer data', CUSTOMER);
+    fetch(API_POINTS.registration, {
+      body: JSON.stringify(CUSTOMER),
+      headers:{
+        'content-type': 'application/json'
+      },
+      method: 'POST'
+    }).then(newCustomer => newCustomer.json())
+      .then(addedCustomer => {
+        console.log(addedCustomer);
+      });
+
+
   }
 
   render(){
     let amount = sessionStorage.getItem('amount');
     let duration = sessionStorage.getItem('duration');
-    let { first_name, middle_names, last_name, address, postcode, email, password, twitter, checked } = this.state;
+    let { first_name, middle_names, last_name, address, postcode, dob, email, password, twitter, checked } = this.state;
     return(
       <div className="container">
         <h3>Personal details</h3>
@@ -79,6 +92,10 @@ class Registration extends Component{
           <div className="form-group">
             <label for="postcode">Postcode</label>
             <input type="text" required className="form-control" id="postcode" name="postcode" placeholder="Postcode" value={postcode} onChange={this.handleChange} />
+          </div>
+          <div className="form-group">
+            <label for="dob">Date of birth</label>
+            <input type="date" required className="form-control" id="dob" name="dob" value={dob} onChange={this.handleChange} />
           </div>
           <hr className="my-4"/>
           <h3>Login details</h3>

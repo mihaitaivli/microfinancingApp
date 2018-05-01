@@ -30,7 +30,20 @@ const CustomerSchema = new Schema({
     required: true
   },
   risk_category : {
-    type: String
+    type: String,
+    default: "medium"
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  passwordHash: {
+    type: String,
+    required: true
+  },
+  twitter: {
+    type: String,
+    default: "none"
   },
   loans: [{ type: Schema.Types.ObjectId, ref: "loans" }]
 });
