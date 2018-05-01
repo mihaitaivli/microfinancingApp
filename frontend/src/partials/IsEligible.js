@@ -22,8 +22,8 @@ const Success = () => {
   return(
     <div className="success">
       <p>Congratulations!</p>
-      <p>You will be redirected to</p>
-      <p>the registration page</p>
+      <p>You are one step closer!</p>
+      <p>Just fill out some details...</p>
       <Link to='/registration' className="btn btn-success">Proceed</Link>
     </div>
   );

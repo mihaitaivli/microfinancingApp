@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import encrypt from '../lib/passwordHash';
 
 // {
 //   "first_name" : "Alexandra",
@@ -9,7 +10,7 @@ import React, { Component } from 'react';
 //   "risk_category" : "medium" - to do later
 // ----------------------------
 // "email"
-// "password"
+// "passwordHash"
 // "twitter" - not required
 // ->returns a customer id
 //   }
@@ -42,7 +43,12 @@ class Registration extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    let { first_name, middle_names, last_name, address, postcode, email, password, twitter } = this.state;
+    let passwordHash = encrypt(password);
+    const CUSTOMER = {
+      first_name, middle_names, last_name, address, postcode, email, passwordHash, twitter
+    }
+    console.log('customer data', CUSTOMER);
   }
 
   render(){
@@ -56,43 +62,43 @@ class Registration extends Component{
         <form className="form">
           <div className="form-group">
             <label for="first_name">First name</label>
-            <input type="text" required class="form-control" id="first_name" name="first_name" placeholder="First name" value={first_name} onChange={this.handleChange} />
+            <input type="text" required className="form-control" id="first_name" name="first_name" placeholder="First name" value={first_name} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="middle_names">Middle names</label>
-            <input type="text" class="form-control" id="middle_names" name="middle_names" placeholder="Middle names" value={middle_names} onChange={this.handleChange} />
+            <input type="text" className="form-control" id="middle_names" name="middle_names" placeholder="Middle names" value={middle_names} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="last_name">Last name</label>
-            <input type="text" required class="form-control" id="last_name" name="last_name" placeholder="Last name" value={last_name} onChange={this.handleChange} />
+            <input type="text" required className="form-control" id="last_name" name="last_name" placeholder="Last name" value={last_name} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="address">Address</label>
-            <input type="text" required class="form-control" id="address" name="address" placeholder="Full address" value={address} onChange={this.handleChange} />
+            <input type="text" required className="form-control" id="address" name="address" placeholder="Full address" value={address} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="postcode">Postcode</label>
-            <input type="text" required class="form-control" id="postcode" name="postcode" placeholder="Postcode" value={postcode} onChange={this.handleChange} />
+            <input type="text" required className="form-control" id="postcode" name="postcode" placeholder="Postcode" value={postcode} onChange={this.handleChange} />
           </div>
           <hr className="my-4"/>
           <h3>Login details</h3>
-          <div class="form-group">
+          <div className="form-group">
             <label for="email">Email</label>
-            <input type="email" required class="form-control" id="email" name="email" placeholder="email" value={email} onChange={this.handleChange} />
+            <input type="email" required className="form-control" id="email" name="email" placeholder="email" value={email} onChange={this.handleChange} />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="password">Password</label>
-            <input type="password" required class="form-control" name="password" id="password" placeholder="Password" value={password} onChange={this.handleChange}  />
+            <input type="password" required className="form-control" name="password" id="password" placeholder="Password" value={password} onChange={this.handleChange}  />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="twitter">Twitter handle</label>
-            <input type="text" class="form-control" id="twitter" name="twitter" placeholder="twitter handle" value={twitter} onChange={this.handleChange}  />
+            <input type="text" className="form-control" id="twitter" name="twitter" placeholder="twitter handle" value={twitter} onChange={this.handleChange}  />
           </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="acceptCheck" onClick={this.handleCheck} />
-            <label class="form-check-label" for="acceptCheck" >I accept the terms and conditions</label>
+          <div className="form-group form-check">
+            <input type="checkbox" className="form-check-input" id="acceptCheck" onClick={this.handleCheck} />
+            <label className="form-check-label" for="acceptCheck" >I accept the terms and conditions</label>
           </div>
-          <button type="submit" disabled={!checked} class="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+          <button type="submit" disabled={!checked} className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );
