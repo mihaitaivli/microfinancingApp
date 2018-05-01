@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 const API = require('../lib/apiPoints');
 
 const customer = sessionStorage.getItem('customer');
@@ -10,7 +11,8 @@ class AddLoan extends Component{
     customer: sessionStorage.getItem('customer'),
     loan_amount: sessionStorage.getItem('amount'),
     loan_term: sessionStorage.getItem('duration'),
-    payment_date: 15
+    payment_date: 15,
+    pathname: null
   }
 
   handleChange = (e) => {
@@ -31,12 +33,18 @@ class AddLoan extends Component{
       method: 'POST'
     }).then(response => response.json())
       .then(updatedCustomer => {
-        console.log(updatedCustomer.loans);
+        this.setState({
+          pathname: '/loanschedule'
+        });
       })
   }
 
   render(){
-    let { loan_amount, loan_term, payment_date } = this.state;
+    let { loan_amount, loan_term, payment_date, pathname, user } = this.state;
+    if (pathname) return <Redirect to={{
+              pathname: pathname,
+              state: { loan_amount, loan_term, payment_date }
+              }} />
     return(
       <div className="container">
         <h3>Loan details</h3>

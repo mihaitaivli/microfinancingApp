@@ -7,6 +7,7 @@ import Login from './Login';
 import Admin from './Admin';
 import Registration from './Registration';
 import AddLoan from './AddLoan';
+import LoanSchedule from './LoanSchedule';
 
 const Main = () => {
   return(
@@ -18,6 +19,7 @@ const Main = () => {
         <Route path='/login' component={Login} />
         <Route path='/admin' component={Admin} />
         <Route path='/add_loan' component={AddLoan} />
+        <Route path='/loanschedule' component={LoanSchedule} />
       </Switch>
     </div>
   );
