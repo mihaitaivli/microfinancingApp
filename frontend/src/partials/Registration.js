@@ -24,12 +24,19 @@ class Registration extends Component{
     "postcode":'',
     "email":'',
     "password":'',
-    "twitter":''
+    "twitter":'',
+    "checked": false
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
+    })
+  }
+
+  handleCheck = (e) => {
+    this.setState({
+      checked : !this.state.checked
     })
   }
 
@@ -41,7 +48,7 @@ class Registration extends Component{
   render(){
     let amount = sessionStorage.getItem('amount');
     let duration = sessionStorage.getItem('duration');
-    let { first_name, middle_names, last_name, address, postcode, email, password, twitter } = this.state;
+    let { first_name, middle_names, last_name, address, postcode, email, password, twitter, checked } = this.state;
     return(
       <div className="container">
         <h3>Personal details</h3>
@@ -82,10 +89,10 @@ class Registration extends Component{
             <input type="text" class="form-control" id="twitter" name="twitter" placeholder="twitter handle" value={twitter} onChange={this.handleChange}  />
           </div>
           <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="acceptCheck" />
-            <label class="form-check-label" for="acceptCheck">I accept the terms and conditions</label>
+            <input type="checkbox" class="form-check-input" id="acceptCheck" onClick={this.handleCheck} />
+            <label class="form-check-label" for="acceptCheck" >I accept the terms and conditions</label>
           </div>
-          <button type="submit" class="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+          <button type="submit" disabled={!checked} class="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );
