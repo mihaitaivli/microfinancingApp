@@ -1,3 +1,4 @@
 module.exports = {
-  registration: 'http://localhost:3001/api/admin/customers'
+  registration: 'http://localhost:3001/api/admin/customers',
+  add_loan: 'http://localhost:3001/api/admin/loans'
 }

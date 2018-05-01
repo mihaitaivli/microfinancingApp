@@ -60,9 +60,8 @@ class Registration extends Component{
           "password":'',
           "twitter":'',
           "checked": false,
-          "referrer": '/addLoan'
+          "referrer": '/add_loan'
         });
-
       })
   }
 
@@ -74,7 +73,6 @@ class Registration extends Component{
     return(
       <div className="container">
         <h3>Personal details</h3>
-        {/* <div>amount is {amount} and duration is {duration} months</div> */}
         <form className="form">
           <div className="form-group">
             <label for="first_name">First name</label>
