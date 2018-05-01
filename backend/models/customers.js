@@ -30,8 +30,7 @@ const CustomerSchema = new Schema({
     required: true
   },
   risk_category : {
-    type: String,
-    required: true
+    type: String
   },
   loans: [{ type: Schema.Types.ObjectId, ref: "loans" }]
 });
