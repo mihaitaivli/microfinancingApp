@@ -11,6 +11,7 @@ const LoanSchedule = (props) => {
   });
 
   return(
+    // Implement the schedule date properly
     <div className="container">
       <hr />
       <h4>This is how your payment schedule looks like</h4>
@@ -20,7 +21,7 @@ const LoanSchedule = (props) => {
             <th scope="col">#</th>
             <th scope="col">Amount remaining</th>
             <th scope="col">Payment</th>
-            <th scope="col">Payment date</th>
+            <th scope="col">Payment date</th> 
           </tr>
         </thead>
         <tbody>

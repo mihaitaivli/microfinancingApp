@@ -5,7 +5,9 @@ module.exports = {
   apply(data, cb){
     return cb(null, checkEligibility(data.amount, data.duration));
   },
-  signin(data, cb){
-    // TODO
+  login(body, cb){
+    Customers.findOne({email:body.email})
+      .then(customer => cb(null, customer))
+      .catch(cb);
   }
 }
