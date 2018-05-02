@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import NoPermission from './NoPermission';
+import CustomerData from './CustomerData';
 import autenticationHandler from '../../lib/autenticationHandler';
 const API = require('../../lib/apiPoints').customers;
 
 class CustomerView extends Component {
   state={
     isAuthenticated: false,
-    isLoading: true,
+    isCustomerLoading: true,
     data: ''
   }
 
@@ -18,7 +19,7 @@ class CustomerView extends Component {
       .then(response => response.json())
       .then(customer => {
         this.setState({
-          isLoading: false,
+          isCustomerLoading: false,
           data: customer
         })
         console.log(customer);
@@ -26,11 +27,11 @@ class CustomerView extends Component {
   }
 
   render(){
-    const { isAuthenticated, isLoading, data } = this.state;
+    const { isAuthenticated, isCustomerLoading, data } = this.state;
     if(!isAuthenticated) return <NoPermission />;
     return(
       <div className="container">
-        <p>{isLoading ? 'Loading...' : data.first_name}</p>
+        {isCustomerLoading ? 'Loading...' : <CustomerData data={data} />}
       </div>
     );
   }

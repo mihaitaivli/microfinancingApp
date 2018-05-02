@@ -19,3 +19,11 @@ footer {
   background-color: rgba(114, 232, 94, 0.4);
   padding: 0.5rem;
 }
+#customerData {
+  border: #FF6600 2px solid;
+  margin: 1rem;
+  padding: 1rem;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
