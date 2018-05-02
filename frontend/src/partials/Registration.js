@@ -38,7 +38,7 @@ class Registration extends Component{
     const CUSTOMER = {
       first_name, middle_names, last_name, address, postcode, email, dob, passwordHash, twitter
     }
-    fetch(API_POINTS.registration, {
+    fetch(API_POINTS.customers, {
       body: JSON.stringify(CUSTOMER),
       headers:{
         'content-type': 'application/json'
