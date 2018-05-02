@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Home from './Home';
 import Apply from './Apply';
-import Login from './Login';
-import Admin from './Admin';
+import Login from './admin/Login';
+import Admin from './admin/Admin';
 import Registration from './Registration';
 import AddLoan from './AddLoan';
 import LoanSchedule from './LoanSchedule';
+import CustomerView from './admin/CustomerView';
 
 const Main = () => {
   return(
@@ -20,6 +21,7 @@ const Main = () => {
         <Route path='/admin' component={Admin} />
         <Route path='/add_loan' component={AddLoan} />
         <Route path='/loanschedule' component={LoanSchedule} />
+        <Route path='/customerview' component={CustomerView} />
       </Switch>
     </div>
   );

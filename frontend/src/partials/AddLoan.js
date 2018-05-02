@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 const API = require('../lib/apiPoints');
 
-const customer = sessionStorage.getItem('customer');
-const loan_amount = sessionStorage.getItem('amount');
-const loan_term = sessionStorage.getItem('duration');
-
 class AddLoan extends Component{
   state={
     customer: sessionStorage.getItem('customer'),

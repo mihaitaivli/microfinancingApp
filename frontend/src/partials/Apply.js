@@ -47,7 +47,7 @@ class Apply extends Component{
           <form>
             <div className="form-group">
               <label for="amount">How much you need</label>
-              <input type="email" className="form-control" id="amount" name="amount" placeholder="Enter amount" value={this.state.amount} onChange={this.handleChange}/>
+              <input type="text" className="form-control" id="amount" name="amount" placeholder="Enter amount" value={this.state.amount} onChange={this.handleChange}/>
             </div>
             <div className="form-group">
               <label for="duration">How long</label>

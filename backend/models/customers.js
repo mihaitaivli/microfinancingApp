@@ -45,6 +45,10 @@ const CustomerSchema = new Schema({
     type: String,
     default: "none"
   },
+  group: {
+    type: String,
+    default: 'regular_user'
+  },
   loans: [{ type: Schema.Types.ObjectId, ref: "loans" }]
 });
 

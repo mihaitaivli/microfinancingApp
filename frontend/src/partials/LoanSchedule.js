@@ -10,12 +10,15 @@ const LoanSchedule = (props) => {
     return <LoanScheduleRow element={element} key={index} />
   });
 
+  // cler the sessionStorage
+  sessionStorage.clear();
+
   return(
     // Implement the schedule date properly
     <div className="container">
       <hr />
       <h4>This is how your payment schedule looks like</h4>
-      <table class="table table-striped">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
