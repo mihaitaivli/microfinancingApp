@@ -2,8 +2,8 @@ const handleErrors = (err, req, res, next) => {
   let message = "";
   switch (err.status) {
     
-    case 40:
-      message = "Bad request";
+    case 400:
+      message = "Invalid email or password";
       break;
     
     case 404:
