@@ -21,7 +21,7 @@ class AddLoan extends Component{
     e.preventDefault();
     const { customer, loan_amount, loan_term, payment_date } = this.state;
     const LOAN = { customer, loan_amount, loan_term, payment_date};
-    fetch(API.add_loan, {
+    fetch(API.loans, {
       body: JSON.stringify(LOAN),
       headers:{
         'content-type': 'application/json'
