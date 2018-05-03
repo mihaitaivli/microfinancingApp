@@ -13,7 +13,7 @@ module.exports = {
       .catch(cb);
   },
   updateStatus(id, newStatus, cb){
-    Loans.findOneAndUpdate(id, newStatus)
+    Loans.findOneAndUpdate(id, {status:newStatus}, {new: true})
       .then(loan => cb(null, loan))
       .catch(cb)
   },
