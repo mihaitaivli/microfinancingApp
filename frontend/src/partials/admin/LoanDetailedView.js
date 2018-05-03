@@ -19,11 +19,19 @@ class LoanDetailedView extends Component {
       })
   }
 
+  handleClick = (e) => {
+    console.log(e.target.textContent);
+  }
+
   render(){
     const { haveData, loan } = this.state;
     if(!haveData) return (<p>Loading...</p>)
     return(
-      <div>
+      <div className="container">
+        <div class="btn-group-lg" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary" onClick={this.handleClick}>Approve</button>
+          <button type="button" class="btn btn-secondary" onClick={this.handleClick}>Reject</button>
+        </div>
         <p>{loan.loan_amount}</p>
       </div>
     );
