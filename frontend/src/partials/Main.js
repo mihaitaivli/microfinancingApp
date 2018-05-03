@@ -10,6 +10,7 @@ import AddLoan from './AddLoan';
 import LoanSchedule from './LoanSchedule';
 import CustomerView from './admin/CustomerView';
 import AdminInterface from './admin/AdminInterface';
+import LoanDetailedView from './admin/LoanDetailedView';
 
 const Main = () => {
   return(
@@ -24,6 +25,7 @@ const Main = () => {
         <Route path='/loanschedule' component={LoanSchedule} />
         <Route path='/customerview' component={CustomerView} />
         <Route path='/admininterface' component={AdminInterface} />
+        <Route path='/loandetailedview/:id' component={LoanDetailedView} />
       </Switch>
     </div>
   );

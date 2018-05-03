@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NoPermission from './NoPermission';
+import AdminLoansList from './AdminLoansList';
 
 class AdminInterface extends Component{
 
@@ -53,7 +54,9 @@ class AdminInterface extends Component{
             <button type="button" active={isLoansActive} class="btn btn-secondary" onClick={this.handleLoans}>Loans</button>
           </div>
           <div hidden={isCustomersHidden}>Customers</div>
-          <div hidden={isLoansHidden}>Loans</div>
+          <div hidden={isLoansHidden}>
+            <AdminLoansList />
+          </div>
         </div>
       </div>
     );
