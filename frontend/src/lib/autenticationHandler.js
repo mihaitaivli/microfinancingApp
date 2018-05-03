@@ -11,7 +11,7 @@ module.exports = {
     return sessionStorage.getItem('authenticated') ? true : false;
   },
   isAdmin: () => {
-    return (sessionStorage.getItem('group') === 'admin' ? true: false;
+    return (sessionStorage.getItem('group') === 'admin' ? true: false);
   },
   getUser: () => {
     return sessionStorage.getItem('user');
