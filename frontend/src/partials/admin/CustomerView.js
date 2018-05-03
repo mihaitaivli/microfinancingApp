@@ -10,7 +10,8 @@ class CustomerView extends Component {
     isAuthenticated: false,
     isCustomerLoading: true,
     isLoansLoading: true,
-    data: ''
+    data: '',
+    loans:''
   }
 
   componentDidMount(){
@@ -24,8 +25,7 @@ class CustomerView extends Component {
           isCustomerLoading: false,
           data: customer
         })
-        // TODO populate the loans
-        // console.log(customer);
+        // populate loans
         fetch(API.loans + 'list', {
           body: JSON.stringify({list: customer.loans}),
           headers:{
@@ -34,14 +34,17 @@ class CustomerView extends Component {
           method: 'POST'
         }).then(response => response.json())
           .then(loans => {
-            console.log(loans);
+            this.setState({
+              isLoansLoading: false,
+              loans
+            })
           })
 
       });
   }
 
   render(){
-    const { isAuthenticated, isCustomerLoading, isLoansLoading, data } = this.state;
+    const { isAuthenticated, isCustomerLoading, isLoansLoading, data, loans } = this.state;
     if(!isAuthenticated) return <NoPermission />;
     return(
       <div>
@@ -49,7 +52,7 @@ class CustomerView extends Component {
           {isCustomerLoading ? 'Loading...' : <CustomerData data={data} />}
         </div>
         <div>
-          {isLoansLoading ? 'Loading...' : <LoansList list={data.loans} />}
+          {isLoansLoading ? 'Loading...' : <LoansList loans={loans} />}
         </div>
       </div>
     );
