@@ -20,6 +20,15 @@ loansRouter.get('/:id', (req, res, next) => {
   })
 });
 
+loansRouter.put('/:id', (req, res, next) => {
+  loansCtrl.updateStatus(req.params.id, req.body.newStatus, (err, loan) => {
+    if (err) {
+      err.status = 500;
+      next(err);
+    } else res.send(loan);
+  })
+});
+
 loansRouter.post('/', (req, res, next) => {
   loansCtrl.add(req.body, (err, UpdatedCustomerWithLoan) => {
     if (err) {

@@ -12,7 +12,7 @@ module.exports = {
       .then(loan => cb(null, loan))
       .catch(cb);
   },
-  updateStatus(id, cb){
+  updateStatus(id, newStatus, cb){
     Loans.findOneAndUpdate(id, newStatus)
       .then(loan => cb(null, loan))
       .catch(cb)
