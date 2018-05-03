@@ -19,7 +19,7 @@ footer {
   background-color: rgba(114, 232, 94, 0.4);
   padding: 0.5rem;
 }
-#customerData {
+.customerData {
   border: #FF6600 2px solid;
   margin: 1rem;
   padding: 1rem;

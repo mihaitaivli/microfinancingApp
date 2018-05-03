@@ -4,7 +4,7 @@ const CustomerData = (props) => {
   let customer = props.data;
   return(
     <div>
-      <div className="row" id="customerData">
+      <div className="row customerData">
         <div className="col-sm-6">
           <h5>Firts name: </h5><p>{customer.first_name}</p>
           <h5>Last name: </h5><p>{customer.last_name}</p>
