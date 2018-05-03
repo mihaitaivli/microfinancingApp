@@ -25,8 +25,8 @@ module.exports = {
       "payment_date": data.payment_date
     };
     Loans.create(details)
-    .then(loan => Customers.findByIdAndUpdate(data.customer, {$push: {"loans": loan._id}}, {new: true}))
-    .then(updatedCustomer => cb(null, updatedCustomer))
-    .catch(cb);
+      .then(loan => Customers.findByIdAndUpdate(data.customer, {$push: {"loans": loan._id}}, {new: true}))
+      .then(updatedCustomer => cb(null, updatedCustomer))
+      .catch(cb);
   }
 }

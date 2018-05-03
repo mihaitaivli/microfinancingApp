@@ -1,9 +1,10 @@
 import React from 'react';
 
-const LoansList = (list) => {
+const LoansList = (props) => {
   return(
     <div className="container">
-      Loans displayed here...
+      <h4>Your current loans</h4>
+      {props.list[0]['_id']}
     </div>
   );
 }

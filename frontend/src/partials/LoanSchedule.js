@@ -19,7 +19,7 @@ const LoanSchedule = (props) => {
     <div className="container">
       <hr />
       <h4>This is how your payment schedule will look</h4>
-      <h5>You will get an answer in 1h max. Guaranteed!</h5>
+      <h5>You will get an answer by email in 1h max. Guaranteed!</h5>
       <table className="table table-striped">
         <thead>
           <tr>

@@ -22,6 +22,7 @@ class CustomerView extends Component {
       .then(customer => {
         this.setState({
           isCustomerLoading: false,
+          isLoansLoading:false,
           data: customer
         })
         // TODO populate the loans
