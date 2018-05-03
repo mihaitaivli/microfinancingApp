@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
 import { Redirect } from 'react-router-dom';
 import getCreditScore from '../../lib/getCreditScore';
+import responseHandler from '../../lib/responseHandler';
 const API = require('../../lib/apiPoints').loans;
 
 class LoanDetailedView extends Component {
@@ -20,7 +21,7 @@ class LoanDetailedView extends Component {
       .then(response => response.json())
       .then(loan => {
 
-        console.log(loan)
+        // console.log(loan)
         this.setState({
           loan,
           customer: loan.customer,
@@ -54,15 +55,30 @@ class LoanDetailedView extends Component {
   }
 
   handleClick = (e) => {
-    console.log(e.target.textContent);
+
+    let action = e.target.textContent;
+    let userAndLoan = {
+      first_name: this.state.customer.first_name,
+      email: this.state.customer.email,
+      amount: this.state.loan.loan_amount,
+      id: this.state.loan._id
+    }
+    responseHandler(action, userAndLoan)
+      .then(status => {
+        console.log(status)
+        this.setState({
+          isDecisionTaken: true
+        })
+      });
   }
 
   render(){
-    const { haveData, loan, customer, creditScore, haveCScore, haveAI_suggestions, AI_suggestions } = this.state;
+    const { haveData, loan, customer, creditScore, haveCScore, haveAI_suggestions, AI_suggestions, isDecisionTaken } = this.state;
     if(!haveData) return (<p>Loading...</p>)
+    if(isDecisionTaken) return <Redirect to='/admininterface' />
     return(
       <div className="container-fluid">
-        <div class="btn-group-lg" role="group" aria-label="Basic example" style={{'margin':'1rem'}}>
+        <div className="btn-group-lg" role="group" aria-label="Basic example" style={{'margin':'1rem'}}>
           <button type="button" className="btn btn-secondary" onClick={this.handleClick}>Approve</button>
           <button type="button" className="btn btn-secondary" onClick={this.handleClick}>Reject</button>
         </div>
@@ -86,7 +102,7 @@ class LoanDetailedView extends Component {
             </div>
             <div className="col-sm-6">
               <h5>Credit score - </h5><p>{!haveCScore? 'Loading...': creditScore.actualCreditScore}</p>
-              <h5>AI suggestions - </h5><p>{!haveAI_suggestions? 'Thinking...': AI_suggestions}</p>
+              <h5>AI suggestions - </h5><p>{!haveAI_suggestions? 'Need more data': AI_suggestions}</p>
             </div>
           </div>
         </div>
