@@ -18,6 +18,7 @@ module.exports = {
   },
   getById(id, cb){
     Loans.findById(id)
+      .populate('customer')
       .then(loan => cb(null, loan))
       .catch(cb);
   },
