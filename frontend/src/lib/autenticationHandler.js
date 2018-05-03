@@ -10,6 +10,9 @@ module.exports = {
   check: () => {
     return sessionStorage.getItem('authenticated') ? true : false;
   },
+  isAdmin: () => {
+    return (sessionStorage.getItem('group') === 'admin' ? true: false;
+  },
   getUser: () => {
     return sessionStorage.getItem('user');
   }
