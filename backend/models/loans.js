@@ -27,6 +27,12 @@ const LoanSchema = new Schema({
     type: Number,
     required: true
   },
+  status: {
+    type: String,
+    default: 'pending'
+  }
 });
+
+// status - can be approved, pending, rejected
 
 module.exports = mongoose.model('loans', LoanSchema);

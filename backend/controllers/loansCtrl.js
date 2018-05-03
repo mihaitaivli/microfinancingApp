@@ -9,8 +9,13 @@ module.exports = {
   },
   getById(id, cb){
     Loans.findById(id)
-      .then(loans => cb(null, loans))
+      .then(loan => cb(null, loan))
       .catch(cb);
+  },
+  updateStatus(id, cb){
+    Loans.findOneAndUpdate(id, newStatus)
+      .then(loan => cb(null, loan))
+      .catch(cb)
   },
   add(data, cb){
     const details = {
