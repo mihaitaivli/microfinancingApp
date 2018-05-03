@@ -1,11 +1,20 @@
 const Loans = require('../models/loans');
 const Customers = require('../models/customers');
+const mongoose = require('mongoose');
 
 module.exports = {
   getAll(cb){
     Loans.find()
       .then(loans => cb(null, loans))
       .catch(cb);
+  },
+  getAllFromList(list, cb){
+    let listOfId = list.map(record => {
+      return mongoose.Types.ObjectId(record);
+    });
+    Loans.find({"_id": { $in: listOfId}})
+    .then(loans => cb(null, loans))
+    .catch(cb);
   },
   getById(id, cb){
     Loans.findById(id)

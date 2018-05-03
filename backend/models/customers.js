@@ -49,7 +49,7 @@ const CustomerSchema = new Schema({
     type: String,
     default: 'regular_user'
   },
-  loans: [{loan: { type: Schema.Types.ObjectId, ref: "loans" }}]
+  loans: [{ type: Schema.Types.ObjectId, ref: "loans" }]
 });
 
 module.exports = mongoose.model('customers', CustomerSchema);

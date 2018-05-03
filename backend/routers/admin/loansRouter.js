@@ -20,6 +20,15 @@ loansRouter.get('/:id', (req, res, next) => {
   })
 });
 
+loansRouter.post('/list', (req, res, next) => {
+  loansCtrl.getAllFromList(req.body.list, (err, loans) => {
+    if (err) {
+      err.status = 500;
+      next(err);
+    } else res.send(loans);
+  })
+});
+
 loansRouter.put('/:id', (req, res, next) => {
   loansCtrl.updateStatus(req.params.id, req.body.newStatus, (err, loan) => {
     if (err) {

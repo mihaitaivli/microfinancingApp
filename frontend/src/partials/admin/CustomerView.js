@@ -27,6 +27,7 @@ class CustomerView extends Component {
         })
         // TODO populate the loans
         console.log(customer);
+        
       });
   }
 
