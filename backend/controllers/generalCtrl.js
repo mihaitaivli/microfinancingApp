@@ -1,3 +1,4 @@
+const Loans = require('../models/loans');
 const Customers = require('../models/customers');
 const checkEligibility = require('../lib/checkEligibility');
 const checkPassword = require('../lib/checkPassword');
@@ -8,6 +9,7 @@ module.exports = {
   },
   login(body, cb){
     Customers.findOne({email:body.email})
+      .populate("loans") // to investigate what is not working
       .then(customer => {
         
         let error = {
@@ -20,6 +22,7 @@ module.exports = {
         let response = checkPassword(body.password, customer.passwordHash) ? customer : error;
         
         cb(null, response)
-      }).catch(cb);
+      })
+      .catch(cb);
   }
 }

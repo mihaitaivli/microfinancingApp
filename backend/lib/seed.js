@@ -18,8 +18,8 @@ saveCustomer = () => {
     postcode : "WV109SN",
     dob: "17.09.1977",
     risk_category: "low",
-    email : "mihaita@gmail.com",
-    passwordHash : "hash",
+    email : "mihaita@test.com",
+    passwordHash : "test",
     twitter : "@mihaitaivli"
   });
   return customer.save();
