@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import LoanScheduleRow from './LoanScheduleRow';
 import scheduler from '../lib/scheduler'
 
@@ -17,7 +18,8 @@ const LoanSchedule = (props) => {
     // Implement the schedule date properly
     <div className="container">
       <hr />
-      <h4>This is how your payment schedule looks like</h4>
+      <h4>This is how your payment schedule will look</h4>
+      <h5>You will get an answer in 1h max. Guaranteed!</h5>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -31,6 +33,7 @@ const LoanSchedule = (props) => {
           { rowList }
         </tbody>
       </table>
+      <Link className="btn btn-primary" to="/">Ok</Link> 
     </div>
   );
 }
