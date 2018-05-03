@@ -10,6 +10,19 @@ const mongoose = require('mongoose');
 const savedData = {};
 
 saveCustomer = () => {
+  const admin = new Customers({
+    customerID : uuid(),
+    first_name : "Admin",
+    last_name: "Admin",
+    address : "123 Long Road, Manchester",
+    postcode : "M123AB",
+    dob: "17.09.1977",
+    risk_category: "low",
+    email : "admin@admin.com",
+    passwordHash : "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    twitter : "@admin",
+    group: "admin"
+  });
   const customer = new Customers({
     customerID : uuid(),
     first_name : "Mihaita",
@@ -22,6 +35,7 @@ saveCustomer = () => {
     passwordHash : "test",
     twitter : "@mihaitaivli"
   });
+  admin.save();
   return customer.save();
 }
 

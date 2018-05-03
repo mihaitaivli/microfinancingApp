@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import AdminLogin from './AdminLogin';
 
-class Admin extends Component {
-  status = {
-    isAuthenticated: false
-  }
-  render(){
-    return(
-      <div>
-        Admin section here
-      </div>
-    );
-  }
+const Admin = () =>  {
+  return(
+    <div className="container">
+      <AdminLogin />
+    </div>
+  );
 }
 
 export default Admin;
