@@ -9,6 +9,7 @@ import Registration from './Registration';
 import AddLoan from './AddLoan';
 import LoanSchedule from './LoanSchedule';
 import CustomerView from './admin/CustomerView';
+import AdminInterface from './admin/AdminInterface';
 
 const Main = () => {
   return(
@@ -22,6 +23,7 @@ const Main = () => {
         <Route path='/add_loan' component={AddLoan} />
         <Route path='/loanschedule' component={LoanSchedule} />
         <Route path='/customerview' component={CustomerView} />
+        <Route path='/admininterface' component={AdminInterface} />
       </Switch>
     </div>
   );
