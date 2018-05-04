@@ -15,7 +15,8 @@ const responseHandler = (action, userAndLoan) => {
     "mailFormat": "plaintext"
   }
 
-  return fetch(mailAPI, {
+  let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  return fetch(proxyUrl + mailAPI, {
     body: JSON.stringify(body),
     headers:{
       'content-type': 'application/json'
@@ -23,7 +24,7 @@ const responseHandler = (action, userAndLoan) => {
     method: 'POST'
   }).then(response => response.json())
     .then(status => {
-      loanStatusUpdater(userAndLoan.id, action)
+      return loanStatusUpdater(userAndLoan.id, action)
         .then(r => r.json())
         .then(updated => updated);
     })
