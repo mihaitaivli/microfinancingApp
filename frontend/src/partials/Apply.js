@@ -28,6 +28,7 @@ class Apply extends Component{
     })
     .then(response => response.json())
     .then(admitted => {
+      console.log(admitted.isEligible);
       sessionStorage.setItem('amount', amount);
       sessionStorage.setItem('duration', duration);
       this.setState({

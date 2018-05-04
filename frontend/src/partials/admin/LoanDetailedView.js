@@ -27,7 +27,7 @@ class LoanDetailedView extends Component {
           customer: loan.customer,
           haveData:true
         });
-        getCreditScore(loan)
+        getCreditScore()
           .then(response => {
             this.setState({
               creditScore: response,
