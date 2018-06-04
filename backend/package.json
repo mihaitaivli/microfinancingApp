@@ -15,12 +15,13 @@
     "chai": "^4.1.2",
     "mocha": "^5.1.0",
     "mongoose": "^5.0.15",
-    "nodemon": "^1.17.3",
+    "nodemon": "^1.17.5",
     "supertest": "^3.0.0",
     "uuid": "^3.2.1"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "hash.js": "^1.1.3"
   }
